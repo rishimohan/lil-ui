@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
-}
+:root {
+  --sand: #FAF3ED;
+  --sand2: #F2EADF;
+  --sand3: #EFDDC8;
+  --sand4: #E1C7A9;
+  --offwhite: #FFFCF8;
+  --body: #312F2C;
+  --body-medium: #433D37;
+  --body-light: #776B5E;
+  --body-lightest: #C7BEB6;
+  --error: #973618;
+  --errorlight: #eb8c6f;
+  --accent: rgba(247, 192, 110, 0.75);
+  --accent2: #EA9144;
+  --accent3: #db6b26;
+  --shadow: #ebe9e5; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: inherit; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+html {
+  box-sizing: border-box;
+  font-size: 90%;
+  line-height: 1;
+  width: 100%;
+  color: #312F2C;
+  background: #FFFCF8;
+  font-family: 'Helvetica'; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+h4 {
+  font-size: 0.8rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 0.5px; }
+
+button {
+  background: none;
+  border: none;
+  padding: none;
+  cursor: pointer; }
+  button:focus {
+    outline: none; }
+
+.badge {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  padding: 5px;
+  font-size: 1rem;
+  background-color: #EA9144;
+  border-radius: 1px;
+  color: #FFFCF8;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  line-height: 100%;
+  cursor: pointer; }
+  .badge--none {
+    background-color: #C7BEB6; }
 
-.App-link {
-  color: #61dafb;
-}
+.btn {
+  height: 3rem;
+  min-width: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #F2EADF;
+  position: relative;
+  transition: all 0.35s; }
+  .btn:hover {
+    background-color: rgba(247, 192, 110, 0.75); }
+  .btn:active {
+    background-color: #F2EADF; }
+  .btn:disabled {
+    cursor: not-allowed; }
+    .btn:disabled:hover {
+      background-color: inherit; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.btn--primary {
+  background-color: #EFDDC8; }
+
+.btn--outline {
+  border: 3px solid #EFDDC8; }
+
+.btn--ghost {
+  color: #C7BEB6;
+  background-color: #F2EADF; }
+
+.btn--inline {
+  background-color: inherit; }
+
+.btn--warning {
+  color: #973618;
+  background-color: #eb8c6f; }
+  .btn--warning:hover {
+    background-color: #eb8c6f; }
+
+.CTA {
+  min-width: 6rem;
+  padding: 0 0.5rem;
+  border: 3px solid transparent; }

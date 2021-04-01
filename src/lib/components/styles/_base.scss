@@ -1,0 +1,35 @@
+*,
+*::after,
+*::before {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: inherit; 
+  }
+
+html {
+    box-sizing: border-box;
+    font-size: 90%;
+    line-height: 1;
+    width: 100%;
+    color: $body;
+    background: $off-white;
+    font-family: 'Helvetica';
+  }
+
+h4 {
+  font-size: 0.8rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }

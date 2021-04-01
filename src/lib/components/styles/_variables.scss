@@ -1,0 +1,62 @@
+$max-width: 1140px; 
+ 
+//text 
+$body: #312F2C;
+$body-medium: #433D37;
+$body-light: #776B5E; 
+$body-lightest: #C7BEB6;
+
+//palette 
+$off-white: #FFFCF8; //background
+$sand: #FAF3ED; //depth + contrast 
+$sand2: #F2EADF; //depth + contrast 
+$sand3: #EFDDC8; //pop styles + highlights 
+$sand4: #E1C7A9;// borders + details
+
+$accent: rgba(247, 192, 110, 0.75);
+$accent2: #EA9144;
+$accent3: rgb(219, 107, 38);
+
+//other 
+$error: #973618;
+$error-light: #eb8c6f;
+
+//borders 
+$border-large: 1rem;
+$border-small: 0.5rem; 
+$border-smallest: 5px; 
+
+$border-body: 1px solid $body; 
+$border-trans: 1px solid transparent; 
+$border: 1px solid black; //for testing 
+
+//shadow
+$transparent: rgba(235, 233, 229, 0.75);
+$shadow: rgb(235, 233, 229); // for shadows and disabled states
+$soft-shadow: 4px 4px 16px $shadow, 
+-4px -4px 16px #fff;
+
+//animation
+$shortest-fade: .15s;
+$short-fade: .35s;
+$long-fade: .7s;
+
+// 0.5rem 1rem 1.5rem 3rem 5rem 10rem 
+
+:root {
+    --sand: #{$sand};
+    --sand2: #{$sand2};
+    --sand3: #{$sand3};
+    --sand4: #{$sand4};
+    --offwhite: #{$off-white};
+    --body: #{$body};
+    --body-medium: #{$body-medium};
+    --body-light: #{$body-light};
+    --body-lightest: #{$body-lightest};
+    --error: #{$error};
+    --errorlight: #{$error-light};
+    --accent: #{$accent};
+    --accent2: #{$accent2};
+    --accent3: #{$accent3};
+    --shadow: #{$shadow};
+}
