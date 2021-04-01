@@ -1,22 +1,31 @@
 {
-  "name": "npm-test",
+  "name": "jawblia",
+  "description": "Two test React components",
+  "author": "Jawblia",
+  "keywords": ["react", "components", "ui"],
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [ "dist", "README.md" ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jawblia/npm-test.git"
+  },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "node-sass": "^5.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "sass": "node-sass src/lib/components/styles/main.scss src/App.css -w",
+    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -36,5 +45,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12"
   }
 }
