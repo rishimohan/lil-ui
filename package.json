@@ -2,13 +2,20 @@
   "name": "lil-ui",
   "description": "Some lil components",
   "author": "thelifeofrishi",
-  "keywords": ["react", "components", "ui"],
-  "version": "0.1.0",
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "version": "0.1.1-a",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [ "dist", "README.md" ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishimohan/lil-ui.git"
