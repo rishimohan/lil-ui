@@ -1,7 +1,7 @@
 {
-  "name": "jawblia",
-  "description": "Two test React components",
-  "author": "Jawblia",
+  "name": "lil-ui",
+  "description": "Some lil components",
+  "author": "thelifeofrishi",
   "keywords": ["react", "components", "ui"],
   "version": "0.1.0",
   "private": false,
@@ -11,7 +11,7 @@
   "files": [ "dist", "README.md" ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jawblia/npm-test.git"
+    "url": "git+https://github.com/rishimohan/lil-ui.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "sass": "node-sass src/lib/components/styles/main.scss src/App.css -w",
+    "sass": "node-sass src/lib/components/styles/main.scss src/app.scss -w",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "eject": "react-scripts eject"
   },

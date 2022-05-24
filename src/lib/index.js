@@ -1,5 +1,4 @@
-import Badge from './components/Badge';
-import Button from './components/Button';
+import Modal from './components/Modal';
+import Pane from './components/Pane';
 
-export { Badge, 
-        Button }; 
+export { Modal, Pane }; 
