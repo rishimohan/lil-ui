@@ -4,8 +4,14 @@ const Pane = ({ show, title, position, onClose, children }) => {
   const RenderChildren = () => {
     if (children) {
       return (
-        <div style={{ color: "#666", display: "flex", alignItems: "center" }}>
-          {title}
+        <div
+          style={{
+            color: "#666",
+            overflow: "auto",
+            height: "calc(100vh - 39px)",
+          }}
+        >
+          <div style={{ padding: "8px 14px 16px 14px" }}>{children}</div>
         </div>
       );
     }
@@ -13,12 +19,12 @@ const Pane = ({ show, title, position, onClose, children }) => {
     return (
       <div
         style={{
-          padding: "5px 8px`",
-          minHeight: "200px",
+          padding: "10px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          opacity: "0.2",
+          opacity: "0.4",
+          height: "100%"
         }}
       >
         ...
@@ -28,7 +34,7 @@ const Pane = ({ show, title, position, onClose, children }) => {
 
   const RenderTitle = () => {
     if (title) {
-      return <div style={{ padding: "5px 8px`" }}>{title}</div>;
+      return <div>{title}</div>;
     }
 
     return "";
@@ -58,7 +64,7 @@ const Pane = ({ show, title, position, onClose, children }) => {
         height: "100%",
         display: "flex",
         alignItems: "flex-start",
-        justifyContent: (!position || position === "" || position === "right") ? "flex-end" : "flex-statt",
+        justifyContent: position === "left" ? "start" : "end",
       }}
     >
       <RenderBackdrop />
@@ -66,18 +72,20 @@ const Pane = ({ show, title, position, onClose, children }) => {
         style={{
           color: "#666",
           border: "1px solid #ededed",
-          minWidth: "500px",
-          minHeight: "100vh",
+          maxWidth: "500px",
+          width: "100%",
+          height: "100vh",
           position: "relative",
           zIndex: "10",
           backgroundColor: "#fff",
           boxShadow: "0 1px 4px rgba(0, 0, 0, 0.02)",
           overflow: "hidden",
+          
         }}
       >
         <div
           style={{
-            padding: "10px 16px",
+            padding: "10px 14px",
             borderBottom: "1px solid #ededed",
             display: "flex",
             alignItems: "center",

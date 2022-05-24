@@ -1,11 +1,16 @@
 import React from "react";
 
-const Modal = ({ show, title, onClose, children }) => {
+const Modal = ({ modalWidth, titleComponent, backdropComponent, show, title, onClose, children }) => {
   const RenderChildren = () => {
     if(children) {
       return (
-        <div style={{ color: "#666", display: "flex", alignItems: "center" }}>
-          {title}
+        <div
+          style={{
+            color: "#666",
+            padding: "10px 16px",
+          }}
+        >
+          {children}
         </div>
       );
     }
@@ -18,8 +23,34 @@ const Modal = ({ show, title, onClose, children }) => {
   }
 
   const RenderTitle = () => {
+    if(titleComponent) {
+      return titleComponent;
+    }
+
     if (title) {
-      return <div style={{ padding: "5px 8px`" }}>{title}</div>;
+      return (
+        <div
+          style={{
+            padding: "10px 16px",
+            borderBottom: "1px solid #ededed",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <di>{title}</di>
+          <div
+            style={{
+              color: "#555",
+              cursor: "pointer",
+              opacity: "0.4",
+            }}
+            onClick={onClose}
+          >
+            ×
+          </div>
+        </div>
+      );
     }
 
     return (
@@ -28,6 +59,10 @@ const Modal = ({ show, title, onClose, children }) => {
   }
 
   const RenderBackdrop = () => {
+    if(backdropComponent) {
+      return <div onClick={onClose}>{backdropComponent}</div>;
+    }
+
     return (
       <div
         style={{
@@ -59,7 +94,7 @@ const Modal = ({ show, title, onClose, children }) => {
         style={{
           color: "#666",
           border: "1px solid #ededed",
-          minWidth: "500px",
+          width: modalWidth || "500px",
           borderRadius: "12px",
           position: "relative",
           zIndex: "10",
@@ -68,27 +103,7 @@ const Modal = ({ show, title, onClose, children }) => {
           overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            padding: "10px 16px",
-            borderBottom: "1px solid #ededed",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <RenderTitle />
-          <div
-            style={{
-              color: "#555",
-              cursor: "pointer",
-              opacity: "0.4",
-            }}
-            onClick={onClose}
-          >
-            ×
-          </div>
-        </div>
+        <RenderTitle />
         <RenderChildren />
       </div>
     </div>
