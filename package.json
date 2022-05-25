@@ -1,6 +1,6 @@
 {
   "name": "lil-ui",
-  "description": "Some lil components",
+  "description": "A set of minimalistic components for React.js projects",
   "author": "thelifeofrishi",
   "keywords": [
     "react",
@@ -9,7 +9,13 @@
   ],
   "version": "0.1.2-a",
   "private": false,
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishimohan/lil-ui.git"
@@ -19,13 +25,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "node-sass": "^7.0.1",
+    "node-sass": "^5.0.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "preview": "react-scripts build",
     "sass": "node-sass src/lib/components/styles/main.scss src/app.scss -w",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "eject": "react-scripts eject"
@@ -49,11 +54,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12"
   }
 }

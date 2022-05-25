@@ -66,6 +66,7 @@ const Modal = ({ modalWidth, titleComponent, backdropComponent, show, title, onC
     return (
       <div
         style={{
+          background: "rgba(255, 255, 255, 0.3)",
           position: "absolute",
           inset: "0",
           width: "100%",
