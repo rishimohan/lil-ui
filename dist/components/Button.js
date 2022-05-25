@@ -11,9 +11,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Button = (_ref) => {
   let {
+    className,
+    onClick,
+    style,
     children
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement("button", null, children);
+  return /*#__PURE__*/_react.default.createElement("button", {
+    onClick: onClick,
+    className: className ? className : "lil-button",
+    style: style ? style : null
+  }, children);
 };
 
 var _default = Button;

@@ -78,6 +78,7 @@ const Modal = (_ref) => {
 
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
+        background: "rgba(255, 255, 255, 0.3)",
         position: "absolute",
         inset: "0",
         width: "100%",
