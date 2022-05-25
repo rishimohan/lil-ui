@@ -23,31 +23,31 @@ const Pane = (_ref) => {
       return /*#__PURE__*/_react.default.createElement("div", {
         style: {
           color: "#666",
-          display: "flex",
-          alignItems: "center"
+          overflow: "auto",
+          height: "calc(100vh - 39px)"
         }
-      }, title);
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        style: {
+          padding: "8px 14px 16px 14px"
+        }
+      }, children));
     }
 
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
-        padding: "5px 8px`",
-        minHeight: "200px",
+        padding: "10px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        opacity: "0.2"
+        opacity: "0.4",
+        height: "100%"
       }
     }, "...");
   };
 
   const RenderTitle = () => {
     if (title) {
-      return /*#__PURE__*/_react.default.createElement("div", {
-        style: {
-          padding: "5px 8px`"
-        }
-      }, title);
+      return /*#__PURE__*/_react.default.createElement("div", null, title);
     }
 
     return "";
@@ -74,14 +74,15 @@ const Pane = (_ref) => {
       height: "100%",
       display: "flex",
       alignItems: "flex-start",
-      justifyContent: !position || position === "" || position === "right" ? "flex-end" : "flex-statt"
+      justifyContent: position === "left" ? "start" : "end"
     }
   }, /*#__PURE__*/_react.default.createElement(RenderBackdrop, null), /*#__PURE__*/_react.default.createElement("div", {
     style: {
       color: "#666",
       border: "1px solid #ededed",
-      minWidth: "500px",
-      minHeight: "100vh",
+      maxWidth: "500px",
+      width: "100%",
+      height: "100vh",
       position: "relative",
       zIndex: "10",
       backgroundColor: "#fff",
@@ -90,7 +91,7 @@ const Pane = (_ref) => {
     }
   }, /*#__PURE__*/_react.default.createElement("div", {
     style: {
-      padding: "10px 16px",
+      padding: "10px 14px",
       borderBottom: "1px solid #ededed",
       display: "flex",
       alignItems: "center",

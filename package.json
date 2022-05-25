@@ -12,11 +12,6 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "build",
-    "README.md"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishimohan/lil-ui.git"

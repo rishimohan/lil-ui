@@ -11,6 +11,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Modal = (_ref) => {
   let {
+    modalWidth,
+    titleComponent,
+    backdropComponent,
     show,
     title,
     onClose,
@@ -22,10 +25,9 @@ const Modal = (_ref) => {
       return /*#__PURE__*/_react.default.createElement("div", {
         style: {
           color: "#666",
-          display: "flex",
-          alignItems: "center"
+          padding: "10px 16px"
         }
-      }, title);
+      }, children);
     }
 
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -41,18 +43,39 @@ const Modal = (_ref) => {
   };
 
   const RenderTitle = () => {
+    if (titleComponent) {
+      return titleComponent;
+    }
+
     if (title) {
       return /*#__PURE__*/_react.default.createElement("div", {
         style: {
-          padding: "5px 8px`"
+          padding: "10px 16px",
+          borderBottom: "1px solid #ededed",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between"
         }
-      }, title);
+      }, /*#__PURE__*/_react.default.createElement("di", null, title), /*#__PURE__*/_react.default.createElement("div", {
+        style: {
+          color: "#555",
+          cursor: "pointer",
+          opacity: "0.4"
+        },
+        onClick: onClose
+      }, "\xD7"));
     }
 
     return "";
   };
 
   const RenderBackdrop = () => {
+    if (backdropComponent) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        onClick: onClose
+      }, backdropComponent);
+    }
+
     return /*#__PURE__*/_react.default.createElement("div", {
       style: {
         position: "absolute",
@@ -79,7 +102,7 @@ const Modal = (_ref) => {
     style: {
       color: "#666",
       border: "1px solid #ededed",
-      minWidth: "500px",
+      width: modalWidth || "500px",
       borderRadius: "12px",
       position: "relative",
       zIndex: "10",
@@ -87,22 +110,7 @@ const Modal = (_ref) => {
       boxShadow: "0 1px 4px rgba(0, 0, 0, 0.02)",
       overflow: "hidden"
     }
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    style: {
-      padding: "10px 16px",
-      borderBottom: "1px solid #ededed",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between"
-    }
-  }, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement("div", {
-    style: {
-      color: "#555",
-      cursor: "pointer",
-      opacity: "0.4"
-    },
-    onClick: onClose
-  }, "\xD7")), /*#__PURE__*/_react.default.createElement(RenderChildren, null))) : "";
+  }, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement(RenderChildren, null))) : "";
 };
 
 var _default = Modal;
