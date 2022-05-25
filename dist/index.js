@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "Button", {
+  enumerable: true,
+  get: function get() {
+    return _Button.default;
+  }
+});
 Object.defineProperty(exports, "Modal", {
   enumerable: true,
   get: function get() {
@@ -13,12 +19,6 @@ Object.defineProperty(exports, "Pane", {
   enumerable: true,
   get: function get() {
     return _Pane.default;
-  }
-});
-Object.defineProperty(exports, "Button", {
-  enumerable: true,
-  get: function get() {
-    return _Button.default;
   }
 });
 

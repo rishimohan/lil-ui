@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Modal = (_ref) => {
+const Modal = _ref => {
   let {
     modalWidth,
     titleComponent,
