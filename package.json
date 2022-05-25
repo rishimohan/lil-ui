@@ -9,9 +9,7 @@
   ],
   "version": "0.1.2-a",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishimohan/lil-ui.git"
