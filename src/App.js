@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {Pane, Modal, Button} from './lib';
-import './app.css';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
