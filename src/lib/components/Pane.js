@@ -1,115 +1,117 @@
 import React from "react";
+import styled from "styled-components";
+import { CloseIcon, BackdropDiv } from "./styles/common";
 
-const Pane = ({ show, title, position, onClose, children }) => {
+const Pane = ({
+  show,
+  title,
+  titleComponent,
+  backdropComponent,
+  paneWidth,
+  hideBackdrop,
+  position,
+  onClose,
+  children,
+}) => {
   const RenderChildren = () => {
     if (children) {
-      return (
-        <div
-          style={{
-            color: "#666",
-            overflow: "auto",
-            height: "calc(100vh - 39px)",
-          }}
-        >
-          <div style={{ padding: "8px 14px 16px 14px" }}>{children}</div>
-        </div>
-      );
+      const ChildrenDiv = styled.div`
+        color: #666;
+        overflow: auto;
+        height: calc(100vh - 39px);
+        padding: 8px 14px 16px 14px;
+      `;
+
+      return <ChildrenDiv>{children}</ChildrenDiv>;
     }
 
-    return (
-      <div
-        style={{
-          padding: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          opacity: "0.4",
-          height: "100%"
-        }}
-      >
-        ...
-      </div>
-    );
+    const ChildrenEmptyDiv = styled.div`
+      color: #666;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.4;
+      height: 100%;
+    `;
+
+    return <ChildrenEmptyDiv>...</ChildrenEmptyDiv>;
   };
 
   const RenderTitle = () => {
+    if (titleComponent) {
+      return titleComponent;
+    }
+
+    const TitleWrapper = styled.div`
+      padding: 10px 16px;
+      border-bottom: 1px solid #ededed;
+      display: flex;
+      align-items: center;
+      justify-content: between;
+    `;
+
     if (title) {
-      return <div>{title}</div>;
+      return (
+        <TitleWrapper>
+          <div>{title}</div>
+          <CloseIcon onClick={onClose}>×</CloseIcon>
+        </TitleWrapper>
+      );
     }
 
     return "";
   };
 
   const RenderBackdrop = () => {
+    if (backdropComponent) {
+      return <div onClick={onClose}>{backdropComponent}</div>;
+    }
+
     return (
-      <div
-        style={{
-          position: "absolute",
-          inset: "0",
-          width: "100%",
-          height: "100%",
-        }}
+      <BackdropDiv
+        style={{ opacity: hideBackdrop ? 0 : 1 }}
         onClick={onClose}
       />
     );
   };
 
-  return show ? (
-    <div
-      style={{
-        position: "fixed",
-        inset: "0",
-        zIndex: "10",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: position === "left" ? "start" : "end",
-      }}
-    >
-      <RenderBackdrop />
-      <div
-        style={{
-          color: "#666",
-          border: "1px solid #ededed",
-          maxWidth: "500px",
-          width: "100%",
-          height: "100vh",
-          position: "relative",
-          zIndex: "10",
-          backgroundColor: "#fff",
-          boxShadow: "0 1px 4px rgba(0, 0, 0, 0.02)",
-          overflow: "hidden",
-          
-        }}
-      >
-        <div
-          style={{
-            padding: "10px 14px",
-            borderBottom: "1px solid #ededed",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+  if (show) {
+    const PaneWrapper = styled.div`
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: start;
+      justify-content: ${() => (position === "left" ? "start" : "end")};
+    `;
+
+    const PaneDialog = styled.div`
+      color: #666;
+      border-left: 1px solid #ededed;
+      width: ${() => paneWidth || "500px"};
+      height: 100vh;
+      position: relative;
+      z-index: 10;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    `;
+
+    return (
+      <PaneWrapper>
+        <RenderBackdrop />
+        <PaneDialog>
           <RenderTitle />
-          <div
-            style={{
-              color: "#555",
-              cursor: "pointer",
-              opacity: "0.4",
-            }}
-            onClick={onClose}
-          >
-            ×
-          </div>
-        </div>
-        <RenderChildren />
-      </div>
-    </div>
-  ) : (
-    ""
-  );
+          <RenderChildren />
+        </PaneDialog>
+      </PaneWrapper>
+    );
+  }
+
+  return "";
 };
 
 export default Pane;

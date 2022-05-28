@@ -1,116 +1,113 @@
 import React from "react";
+import styled from "styled-components";
+import { CloseIcon, BackdropDiv } from "./styles/common";
 
-const Modal = ({ modalWidth, titleComponent, backdropComponent, show, title, onClose, children }) => {
+const Modal = ({
+  modalWidth,
+  titleComponent,
+  hideBackdrop,
+  backdropComponent,
+  show,
+  title,
+  onClose,
+  children,
+}) => {
   const RenderChildren = () => {
-    if(children) {
-      return (
-        <div
-          style={{
-            color: "#666",
-            padding: "10px 16px",
-          }}
-        >
-          {children}
-        </div>
-      );
+    const ChildrenDiv = styled.div`
+      color: #666;
+      padding: 12px 16px;
+    `;
+
+    if (children) {
+      return <ChildrenDiv>{children}</ChildrenDiv>;
     }
 
-    return (
-      <div style={{ padding: "5px 8px`", minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", opacity: "0.2"}}>
-        ...
-      </div>
-    )
-  }
+    const ChildrenEmptyDiv = styled.div`
+      padding: 10px 16px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.2;
+    `;
+
+    return <ChildrenEmptyDiv>...</ChildrenEmptyDiv>;
+  };
 
   const RenderTitle = () => {
-    if(titleComponent) {
+    if (titleComponent) {
       return titleComponent;
     }
 
+    const TitleWrapper = styled.div`
+      padding: 10px 16px;
+      border-bottom: 1px solid #ededed;
+      display: flex;
+      align-items: center;
+      justify-content: between;
+    `;
+
     if (title) {
       return (
-        <div
-          style={{
-            padding: "10px 16px",
-            borderBottom: "1px solid #ededed",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <di>{title}</di>
-          <div
-            style={{
-              color: "#555",
-              cursor: "pointer",
-              opacity: "0.4",
-            }}
-            onClick={onClose}
-          >
-            ×
-          </div>
-        </div>
+        <TitleWrapper>
+          <div>{title}</div>
+          <CloseIcon onClick={onClose}>×</CloseIcon>
+        </TitleWrapper>
       );
     }
 
-    return (
-      ""
-    );
-  }
+    return "";
+  };
 
   const RenderBackdrop = () => {
-    if(backdropComponent) {
+    if (backdropComponent) {
       return <div onClick={onClose}>{backdropComponent}</div>;
     }
 
     return (
-      <div
-        style={{
-          background: "rgba(255, 255, 255, 0.3)",
-          position: "absolute",
-          inset: "0",
-          width: "100%",
-          height: "100%",
-        }}
+      <BackdropDiv
         onClick={onClose}
+        style={{ opacity: hideBackdrop ? 0 : 1 }}
       />
+    );
+  };
+
+  if (show) {
+    const ModalWrapper = styled.div`
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `;
+
+    const ModalDialog = styled.div`
+      color: #666;
+      border: 1px solid #ededed;
+      width: ${() => modalWidth || "500px"};
+      border-radius: 12px;
+      position: relative;
+      z-index: 10;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    `;
+
+    return (
+      <ModalWrapper>
+        <RenderBackdrop />
+        <ModalDialog>
+          <RenderTitle />
+          <RenderChildren />
+        </ModalDialog>
+      </ModalWrapper>
     );
   }
 
-  return show ? (
-    <div
-      style={{
-        position: "fixed",
-        inset: "0",
-        zIndex: "10",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <RenderBackdrop />
-      <div
-        style={{
-          color: "#666",
-          border: "1px solid #ededed",
-          width: modalWidth || "500px",
-          borderRadius: "12px",
-          position: "relative",
-          zIndex: "10",
-          backgroundColor: "#fff",
-          boxShadow: "0 1px 4px rgba(0, 0, 0, 0.02)",
-          overflow: "hidden",
-        }}
-      >
-        <RenderTitle />
-        <RenderChildren />
-      </div>
-    </div>
-  ) : (
-    ""
-  );
+  return "";
 };
 
 export default Modal;
