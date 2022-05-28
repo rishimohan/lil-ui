@@ -11,6 +11,7 @@ const Button = ({ className, onClick, style, children }) => {
     border: 1px solid #d4d4d4;
     font-size: 0.9rem;
     box-shadow: 0 1px 3px rgba(17, 17, 17, 0.05);
+    cursor: default;
 
     &:hover {
       border-color: #b5b5b5;

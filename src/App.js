@@ -1,18 +1,21 @@
 import {useState} from "react";
 import {Pane, Modal, Button} from './lib';
+import styled from "styled-components"
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showPane, setShowPane] = useState(false);
 
+  const BaseDiv = styled.div`
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 12px;
+  `;
+
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "20px auto",
-        borderRadius: "12px",
-      }}
-    >
+    <BaseDiv>
       <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
         <h1
           style={{
@@ -91,89 +94,6 @@ function App() {
             <h2>Modal</h2>
             <Button onClick={() => setShowModal(true)}>Show Modal</Button>
           </div>
-          <div
-            style={{
-              width: "100%",
-              border: "1px solid #ddd",
-              borderRadius: "12px",
-              overflow: "hidden",
-            }}
-          >
-            <table>
-              <thead>
-                <tr>
-                  <th>Prop</th>
-                  <th>Default value</th>
-                  <th>Options</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <code>show</code>
-                  </td>
-                  <td>
-                    <code>false</code>
-                  </td>
-                  <td>
-                    <div>
-                      <p>
-                        <code>true</code> to show the modal
-                      </p>
-                      <p>
-                        <code>false</code> to hide the modal
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <code>children</code>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div>Modal content can be passed as children</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <code>titleComponent</code>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div>Custom component for modal heading</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <code>backdropComponent</code>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div>Custom component for modal backdrop</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <code>title</code>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div>Modal title</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <code>onClose</code>
-                  </td>
-                  <td></td>
-                  <td>
-                    <div>Function to run when modal closes</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
         <Modal
           // backdropComponent={
@@ -197,7 +117,6 @@ function App() {
           animi error aliquam non ipsa, inventore sint cupiditate quod ratione
           sunt autem? Amet?
         </Modal>
-        <hr />
         <h2>Pane</h2>
         <Button onClick={() => setShowPane(true)}>Show Pane</Button>
         <Pane
@@ -205,11 +124,10 @@ function App() {
           onClose={() => setShowPane(false)}
           title="Pane Title"
         ></Pane>
-        <hr />
         <h2>Button</h2>
         <Button>Signup</Button>
       </div>
-    </div>
+    </BaseDiv>
   );
 }
 
