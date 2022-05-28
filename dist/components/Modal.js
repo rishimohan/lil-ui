@@ -7,12 +7,21 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _common = require("./styles/common");
+
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 const Modal = _ref => {
   let {
     modalWidth,
     titleComponent,
+    hideBackdrop,
     backdropComponent,
     show,
     title,
@@ -21,25 +30,15 @@ const Modal = _ref => {
   } = _ref;
 
   const RenderChildren = () => {
+    const ChildrenDiv = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      color: #666;\n      padding: 12px 16px;\n    "])));
+
     if (children) {
-      return /*#__PURE__*/_react.default.createElement("div", {
-        style: {
-          color: "#666",
-          padding: "10px 16px"
-        }
-      }, children);
+      return /*#__PURE__*/_react.default.createElement(ChildrenDiv, null, children);
     }
 
-    return /*#__PURE__*/_react.default.createElement("div", {
-      style: {
-        padding: "5px 8px`",
-        minHeight: "200px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: "0.2"
-      }
-    }, "...");
+    const ChildrenEmptyDiv = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n      padding: 10px 16px;\n      min-height: 200px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      opacity: 0.2;\n    "])));
+
+    return /*#__PURE__*/_react.default.createElement(ChildrenEmptyDiv, null, "...");
   };
 
   const RenderTitle = () => {
@@ -47,21 +46,10 @@ const Modal = _ref => {
       return titleComponent;
     }
 
+    const TitleWrapper = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n      padding: 10px 16px;\n      border-bottom: 1px solid #ededed;\n      display: flex;\n      align-items: center;\n      justify-content: between;\n    "])));
+
     if (title) {
-      return /*#__PURE__*/_react.default.createElement("div", {
-        style: {
-          padding: "10px 16px",
-          borderBottom: "1px solid #ededed",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between"
-        }
-      }, /*#__PURE__*/_react.default.createElement("di", null, title), /*#__PURE__*/_react.default.createElement("div", {
-        style: {
-          color: "#555",
-          cursor: "pointer",
-          opacity: "0.4"
-        },
+      return /*#__PURE__*/_react.default.createElement(TitleWrapper, null, /*#__PURE__*/_react.default.createElement("div", null, title), /*#__PURE__*/_react.default.createElement(_common.CloseIcon, {
         onClick: onClose
       }, "\xD7"));
     }
@@ -76,42 +64,23 @@ const Modal = _ref => {
       }, backdropComponent);
     }
 
-    return /*#__PURE__*/_react.default.createElement("div", {
+    return /*#__PURE__*/_react.default.createElement(_common.BackdropDiv, {
+      onClick: onClose,
       style: {
-        background: "rgba(255, 255, 255, 0.3)",
-        position: "absolute",
-        inset: "0",
-        width: "100%",
-        height: "100%"
-      },
-      onClick: onClose
+        opacity: hideBackdrop ? 0 : 1
+      }
     });
   };
 
-  return show ? /*#__PURE__*/_react.default.createElement("div", {
-    style: {
-      position: "fixed",
-      inset: "0",
-      zIndex: "10",
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, /*#__PURE__*/_react.default.createElement(RenderBackdrop, null), /*#__PURE__*/_react.default.createElement("div", {
-    style: {
-      color: "#666",
-      border: "1px solid #ededed",
-      width: modalWidth || "500px",
-      borderRadius: "12px",
-      position: "relative",
-      zIndex: "10",
-      backgroundColor: "#fff",
-      boxShadow: "0 1px 4px rgba(0, 0, 0, 0.02)",
-      overflow: "hidden"
-    }
-  }, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement(RenderChildren, null))) : "";
+  if (show) {
+    const ModalWrapper = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n      position: fixed;\n      inset: 0;\n      z-index: 10;\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    "])));
+
+    const ModalDialog = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n      color: #666;\n      border: 1px solid #ededed;\n      width: ", ";\n      border-radius: 12px;\n      position: relative;\n      z-index: 10;\n      background: #fff;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);\n      overflow: hidden;\n    "])), () => modalWidth || "500px");
+
+    return /*#__PURE__*/_react.default.createElement(ModalWrapper, null, /*#__PURE__*/_react.default.createElement(RenderBackdrop, null), /*#__PURE__*/_react.default.createElement(ModalDialog, null, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement(RenderChildren, null)));
+  }
+
+  return "";
 };
 
 var _default = Modal;
