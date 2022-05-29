@@ -17,6 +17,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+const ChildrenDiv = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  color: #666;\n  overflow: auto;\n  height: calc(100vh - 39px);\n  padding: 8px 14px 16px 14px;\n"])));
+
+const ChildrenEmptyDiv = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  color: #666;\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  opacity: 0.4;\n  height: 100%;\n"])));
+
+const TitleWrapper = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  padding: 10px 16px;\n  border-bottom: 1px solid #ededed;\n  display: flex;\n  align-items: center;\n  justify-content: between;\n"])));
+
+const PaneWrapper = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  position: fixed;\n  inset: 0;\n  z-index: 10;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: start;\n  justify-content: ", ";\n"])), props => props.position === "left" ? "start" : "end");
+
+const PaneDialog = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  color: #666;\n  border-left: 1px solid #ededed;\n  width: ", ";\n  height: 100vh;\n  position: relative;\n  z-index: 10;\n  background: #fff;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);\n  overflow: hidden;\n"])), props => props.paneWidth || "500px");
+
 const Pane = _ref => {
   let {
     show,
@@ -32,12 +42,8 @@ const Pane = _ref => {
 
   const RenderChildren = () => {
     if (children) {
-      const ChildrenDiv = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        color: #666;\n        overflow: auto;\n        height: calc(100vh - 39px);\n        padding: 8px 14px 16px 14px;\n      "])));
-
       return /*#__PURE__*/_react.default.createElement(ChildrenDiv, null, children);
     }
-
-    const ChildrenEmptyDiv = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n      color: #666;\n      padding: 10px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      opacity: 0.4;\n      height: 100%;\n    "])));
 
     return /*#__PURE__*/_react.default.createElement(ChildrenEmptyDiv, null, "...");
   };
@@ -46,8 +52,6 @@ const Pane = _ref => {
     if (titleComponent) {
       return titleComponent;
     }
-
-    const TitleWrapper = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n      padding: 10px 16px;\n      border-bottom: 1px solid #ededed;\n      display: flex;\n      align-items: center;\n      justify-content: between;\n    "])));
 
     if (title) {
       return /*#__PURE__*/_react.default.createElement(TitleWrapper, null, /*#__PURE__*/_react.default.createElement("div", null, title), /*#__PURE__*/_react.default.createElement(_common.CloseIcon, {
@@ -74,11 +78,11 @@ const Pane = _ref => {
   };
 
   if (show) {
-    const PaneWrapper = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n      position: fixed;\n      inset: 0;\n      z-index: 10;\n      width: 100%;\n      height: 100%;\n      display: flex;\n      align-items: start;\n      justify-content: ", ";\n    "])), () => position === "left" ? "start" : "end");
-
-    const PaneDialog = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n      color: #666;\n      border-left: 1px solid #ededed;\n      width: ", ";\n      height: 100vh;\n      position: relative;\n      z-index: 10;\n      background: #fff;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);\n      overflow: hidden;\n    "])), () => paneWidth || "500px");
-
-    return /*#__PURE__*/_react.default.createElement(PaneWrapper, null, /*#__PURE__*/_react.default.createElement(RenderBackdrop, null), /*#__PURE__*/_react.default.createElement(PaneDialog, null, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement(RenderChildren, null)));
+    return /*#__PURE__*/_react.default.createElement(PaneWrapper, {
+      position: position
+    }, /*#__PURE__*/_react.default.createElement(RenderBackdrop, null), /*#__PURE__*/_react.default.createElement(PaneDialog, {
+      paneWidth: paneWidth
+    }, /*#__PURE__*/_react.default.createElement(RenderTitle, null), /*#__PURE__*/_react.default.createElement(RenderChildren, null)));
   }
 
   return "";

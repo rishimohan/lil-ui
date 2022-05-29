@@ -25,7 +25,6 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({ className, onClick, style, children }) => {
-
   return (
     <StyledButton
       onClick={onClick}

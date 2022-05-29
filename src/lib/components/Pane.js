@@ -2,6 +2,54 @@ import React from "react";
 import styled from "styled-components";
 import { CloseIcon, BackdropDiv } from "./styles/common";
 
+const ChildrenDiv = styled.div`
+  color: #666;
+  overflow: auto;
+  height: calc(100vh - 39px);
+  padding: 8px 14px 16px 14px;
+`;
+
+const ChildrenEmptyDiv = styled.div`
+  color: #666;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  height: 100%;
+`;
+
+const TitleWrapper = styled.div`
+  padding: 10px 16px;
+  border-bottom: 1px solid #ededed;
+  display: flex;
+  align-items: center;
+  justify-content: between;
+`;
+
+const PaneWrapper = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: ${(props) => (props.position === "left" ? "start" : "end")};
+`;
+
+const PaneDialog = styled.div`
+  color: #666;
+  border-left: 1px solid #ededed;
+  width: ${(props) => props.paneWidth || "500px"};
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+`;
+
 const Pane = ({
   show,
   title,
@@ -15,25 +63,8 @@ const Pane = ({
 }) => {
   const RenderChildren = () => {
     if (children) {
-      const ChildrenDiv = styled.div`
-        color: #666;
-        overflow: auto;
-        height: calc(100vh - 39px);
-        padding: 8px 14px 16px 14px;
-      `;
-
       return <ChildrenDiv>{children}</ChildrenDiv>;
     }
-
-    const ChildrenEmptyDiv = styled.div`
-      color: #666;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.4;
-      height: 100%;
-    `;
 
     return <ChildrenEmptyDiv>...</ChildrenEmptyDiv>;
   };
@@ -42,14 +73,6 @@ const Pane = ({
     if (titleComponent) {
       return titleComponent;
     }
-
-    const TitleWrapper = styled.div`
-      padding: 10px 16px;
-      border-bottom: 1px solid #ededed;
-      display: flex;
-      align-items: center;
-      justify-content: between;
-    `;
 
     if (title) {
       return (
@@ -77,33 +100,10 @@ const Pane = ({
   };
 
   if (show) {
-    const PaneWrapper = styled.div`
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: start;
-      justify-content: ${() => (position === "left" ? "start" : "end")};
-    `;
-
-    const PaneDialog = styled.div`
-      color: #666;
-      border-left: 1px solid #ededed;
-      width: ${() => paneWidth || "500px"};
-      height: 100vh;
-      position: relative;
-      z-index: 10;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-    `;
-
     return (
-      <PaneWrapper>
+      <PaneWrapper position={position}>
         <RenderBackdrop />
-        <PaneDialog>
+        <PaneDialog paneWidth={paneWidth}>
           <RenderTitle />
           <RenderChildren />
         </PaneDialog>
