@@ -15,6 +15,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+const StyledButton = _styledComponents.default.button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  font-family: inherit, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto,\n    Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n  padding: 7px 14px;\n  border-radius: 8px;\n  background: #fff;\n  color: #777;\n  border: 1px solid #d4d4d4;\n  font-size: 0.9rem;\n  box-shadow: 0 1px 3px rgba(17, 17, 17, 0.05);\n  cursor: default;\n\n  &:hover {\n    border-color: #b5b5b5;\n  }\n\n  &:focus,\n  &:active {\n    transition: transform 0.1s ease-in-out;\n    transform: scale(0.97);\n  }\n"])));
+
 const Button = _ref => {
   let {
     className,
@@ -22,10 +24,7 @@ const Button = _ref => {
     style,
     children
   } = _ref;
-
-  const Button = _styledComponents.default.button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    font-family: inherit, -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif;\n    padding: 7px 14px;\n    border-radius: 8px;\n    background: #fff;\n    color: #777;\n    border: 1px solid #d4d4d4;\n    font-size: 0.9rem;\n    box-shadow: 0 1px 3px rgba(17, 17, 17, 0.05);\n    cursor: default;\n\n    &:hover {\n      border-color: #b5b5b5;\n    }\n\n    &:focus, &:active {\n      transition: transform 0.1s ease-in-out;\n      transform: scale(0.97);\n    }\n  "])));
-
-  return /*#__PURE__*/_react.default.createElement(Button, {
+  return /*#__PURE__*/_react.default.createElement(StyledButton, {
     onClick: onClick,
     className: className ? className : "lil-button",
     style: style ? style : null

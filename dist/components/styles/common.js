@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 // Close icon
-const CloseIcon = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  color: #d4d4d4;\n  cursor: default;\n  margin-left: auto;\n  font-size: 1.2rem;\n\n  &:hover {\n    color: #999;\n  }\n"]))); // Pane and modal backdrop
+const CloseIcon = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  color: #d4d4d4;\n  cursor: default;\n  margin-left: auto;\n  font-size: 1.2rem;\n  width: 20px;\n  text-align: center;\n\n  &:hover {\n    color: #999;\n  }\n"]))); // Pane and modal backdrop
 
 
 exports.CloseIcon = CloseIcon;
