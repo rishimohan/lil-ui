@@ -7,6 +7,8 @@ export const CloseIcon = styled.div`
   cursor: default;
   margin-left: auto;
   font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
 
   &:hover {
     color: #999;
